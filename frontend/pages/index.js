@@ -101,7 +101,7 @@ const Home = () => {
             <div className={styles.project_display_left}>
                 <Fade bottom>
                 <h1> Hashix </h1>
-                <p> A Desktop Application Using electron.js and node.js to encrypt files and folder </p>
+                <p> A Desktop Application Using electron.js and node.js to encrypt files and folders </p>
                 <ChakraLink href="https://github.com/divinepaul/hashix" isExternal>
                     <Button rightIcon={<AiFillGithub/>} colorScheme='teal' variant='outline'>
                         View Source Code 
@@ -169,7 +169,7 @@ const Home = () => {
 
         <div className={styles.tech_list_container}>
             <Fade bottom>
-            <h1> Fontend Libraries/FrameWorks </h1>
+            <h1> Frontend Libraries/FrameWorks </h1>
             </Fade>
             <div className={styles.tech_list_horizontal}>
                 <Fade>
