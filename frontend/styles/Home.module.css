@@ -83,6 +83,46 @@
 
 
 
+.blogposts_container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-left: 10%;
+    min-height: 10vh;
+    width: 100%;
+}
+
+.blogpost_item {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+}
+
+.blogpost_item p{
+    display: inline;
+}
+.blogpost_item span{
+    display: inline;
+
+}
+
+.blogpost_item a{
+    display: inline;
+}
+.blogpost_padding {
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+
+}
+.blogpost_link {
+    color: #3434eb;
+}
+.blogpost_link:hover {
+    text-decoration: underline;
+}
+
+
+
 
 
 
@@ -166,6 +206,15 @@
         font-size: 25px;
         padding-left: 8%;
     }
+    .blogposts_container {
+        padding: 8%;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+    .blogpost_item {
+        font-size: 16px;
+    }
+
     .contact_section {
         min-height: 40vh;
     }

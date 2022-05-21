@@ -1,0 +1,48 @@
+.main {
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 5%;
+
+}
+.main h1 {
+    font-size: 35px;
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-weight: 900;
+}
+
+.main h2 {
+    font-size: 30px;
+    font-family: 'Bai Jamjuree', sans-serif;
+    margin: 30px 0;
+}
+.main p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    line-height: 2;
+    text-align: justify;
+}
+.main code {
+    margin: 30px 0;
+}
+
+@media only screen and (max-width: 1200px) {
+    .main {
+        width: 70%;
+    }
+
+}
+@media only screen and (max-width: 768px) {
+    .main {
+        width: 100%;
+        padding: 5%;
+    }
+    .main h1 {
+        font-size: 30px;
+    }
+    .main h2 {
+        font-size: 25px;
+    }
+    .main p {
+        font-size: 16px;
+    }
+}

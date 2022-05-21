@@ -1,3 +1,6 @@
+import fs from "fs";
+import Script from 'next/script'
+import matter from "gray-matter";
 import Head from 'next/head'
 import Fade from 'react-reveal/Fade';
 import styles from '../styles/Home.module.css'
@@ -41,11 +44,62 @@ import HashixScreenShot from '../public/screenshots/hashix.jpg'
 import AsthamScreenShot from '../public/screenshots/asthma.jpg'
 
 
+
 import TechBox from '../components/TechBox';
 
-const Home = () => {
+//Generating the Static Props for the Blog Page
+export async function getStaticProps(){
+    // get list of files from the posts folder
+    const files = fs.readdirSync('posts');
+
+    // get frontmatter & slug from each post
+    const posts = files.map((fileName) => {
+        const slug = fileName.replace('.md', '');
+        const readFile = fs.readFileSync(`posts/${fileName}`, 'utf-8');
+        const { data: frontmatter } = matter(readFile);
+
+        return {
+          slug,
+          frontmatter,
+        };
+    });
+    // sort the posts in chronological order
+    posts.sort((a, b) => {
+        let aDate = new Date(a.frontmatter.date);
+        let bDate = new Date(b.frontmatter.date);
+        if(aDate < bDate){
+            return 1;
+        } else if (aDate > bDate){
+            return -1;
+
+        } else {
+            return 0;
+        }
+    } )
+
+    // Return the pages static props
+    return {
+        props: {
+          posts,
+        },
+    };
+}
+
+const Home = (props) => {
    return (
       <main className={styles.main}>
+        <Script
+            src="https://www.googletagmanager.com/gtag/js?id=G-8MKPZRSWXX"
+            strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-8MKPZRSWXX');
+          `}
+        </Script>
       <Head>
         <title>Divine Paul</title>
         <meta name="description" content="Divine Paul. Full Stack Developer" />
@@ -209,6 +263,27 @@ const Home = () => {
                 </Fade>
             </div>
         </div>
+
+        <div className={styles.projects_container}>
+            <Fade bottom>
+            <h1>Blog Posts</h1>
+            </Fade>
+        </div>
+       <div className={styles.blogposts_container}>
+       {
+            props.posts.map((post,i) => {
+                return (
+                    <div key={i} className={styles.blogpost_item}>
+                        <p>{post.frontmatter.date}
+                        <span className={styles.blogpost_padding}>|</span>
+                        <a className={styles.blogpost_link}  href={"/blog/"+ post.slug}>{post.frontmatter.title}</a>
+                        </p>
+                    </div>
+                )
+                
+            })
+       }
+       </div>
 
         <div className={styles.projects_container}>
             <Fade bottom>
