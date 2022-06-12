@@ -14,11 +14,16 @@ export default function BlogPost({frontmatter, content}) {
         //<h3>{category} || {tags.join()}</h3>
     return (
         <main className={styles.main}>
+            <Head>
+                <link rel="stylesheet"
+                      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/github-dark.min.css"/>
+                <title>{title}</title>
+            </Head>
             <Script
                 src="https://www.googletagmanager.com/gtag/js?id=G-8MKPZRSWXX"
-                strategy="afterInteractive"
+                strategy="beforeInteractive"
             />
-            <Script id="google-analytics" strategy="afterInteractive">
+            <Script id="google-analytics" strategy="beforeInteractive">
               {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){window.dataLayer.push(arguments);}
@@ -26,10 +31,6 @@ export default function BlogPost({frontmatter, content}) {
                 gtag('config', 'G-8MKPZRSWXX');
               `}
             </Script>
-            <Head>
-                <link rel="stylesheet"
-                      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/github-dark.min.css"/>
-            </Head>
             <h1>{title}</h1>
             <p>{author} | {date}</p>
             <ReactMarkdown rehypePlugins={[rehypeHighlight]}>{content}</ReactMarkdown>

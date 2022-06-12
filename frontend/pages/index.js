@@ -88,11 +88,16 @@ export async function getStaticProps(){
 const Home = (props) => {
    return (
       <main className={styles.main}>
+      <Head>
+        <title>Divine Paul</title>
+        <meta name="description" content="Divine Paul. Full Stack Developer" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
         <Script
             src="https://www.googletagmanager.com/gtag/js?id=G-8MKPZRSWXX"
-            strategy="afterInteractive"
+            strategy="beforeInteractive"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="beforeInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){window.dataLayer.push(arguments);}
@@ -100,11 +105,6 @@ const Home = (props) => {
             gtag('config', 'G-8MKPZRSWXX');
           `}
         </Script>
-      <Head>
-        <title>Divine Paul</title>
-        <meta name="description" content="Divine Paul. Full Stack Developer" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
         <div className={styles.hero_section}>
             <div className={styles.hero_text_container}>
             <Fade >
@@ -318,6 +318,7 @@ const Home = (props) => {
            </div>
         </a>
        </div>
+
       </main>
 
     )
