@@ -223,3 +223,25 @@
     }
 }
 
+
+.techbox_container {
+    font-family: "Roboto", sans-serif;
+    width: 100px;
+    height: 100px;
+    border: 1px solid grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    font-size: 15px; 
+    margin: 10px;
+}
+.techbox_icon {
+    font-size: 50px; 
+}
+@media only screen and (max-width: 768px) {
+    .techbox_container {
+        margin: 3px;
+    }
+}
